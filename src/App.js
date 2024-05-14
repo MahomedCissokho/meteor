@@ -59,6 +59,9 @@ const App = () => {
       .catch((error) => console.error(error));
   }, [APIURL]);
 
+  let backgroundColor = temperature < 0 ? 'bg-[#f5f5f5]' : temperature <= 20 ? 'bg-blue-400' : temperature > 20 && temperature <= 30 ? 'bg-orange-400' : 'bg-red-400'
+  let changeColor = temperature < 0 ? '' : "text-white"
+
   return (
     <>
       {loading ? (
@@ -66,10 +69,10 @@ const App = () => {
           <DotLoader color="#cdcdcd" loading={loading} size={50} />
         </div>
       ) : (
-        <div>
+        <div className={`w-screen h-screen ${backgroundColor}`} >
   <div className="flex flex-col max-w-6xl mx-auto px-5 h-full items-center justify-center py-10">
-            <h1 className="text-4xl mb-5 text-gray-800">Weather App</h1>
-            <h3 className="text-2xl text-[#aaa]/90 mb-7">Put coordinates</h3>
+            <h1 className={`text-4xl mb-5 text-gray-800 ${changeColor}`}>Weather App</h1>
+            <h3 className={`text-2xl text-[#aaa]/90 mb-7 ${changeColor}`}>Put coordinates</h3>
             <form
               onSubmit={handleSubmit}
               className="md:flex-row flex-col flex items-center justify-center gap-7 mb-20 mt-3"
@@ -96,19 +99,19 @@ const App = () => {
             </form>
             <div className="flex justify-center gap-20 flex-col md:flex-row">
               <div className="text-xl flex flex-col items-center jusitfy-center gap-8">
-                <h1 className="font-semibold text-gray-400">
+                <h1 className={`font-semibold text-gray-400 ${changeColor}`}>
                   <span className="font-bold text-neutral-700">City</span> :{" "}
                   {city}
                 </h1>
-                <h1 className="font-semibold text-gray-400">
+                <h1 className={`font-semibold text-gray-400 ${changeColor}`}>
                   <span className="font-bold text-neutral-700">Temperature</span>{" "}
                   : {temperature}°C
                 </h1>
-                <h1 className="font-semibold text-gray-400">
+                <h1 className={`font-semibold text-gray-400 ${changeColor}`}>
                   <span className="font-bold text-neutral-700">Main</span> :{" "}
                   {mainInfo.main}
                 </h1>
-                <h1 className="font-semibold text-gray-400">
+                <h1 className={`font-semibold text-gray-400 ${changeColor}`}>
                   <span className="font-bold text-neutral-700">Description</span>{" "}
                   : {mainInfo.description}
                 </h1>
@@ -119,11 +122,11 @@ const App = () => {
                   alt="Weather"
                   className="w-28 h-28 bg-center"
                 />
-                <h3>
+                <h3 className={`font-semibold text-gray-400 ${changeColor}`}>
                   <span className="font-bold text-neutral-700">Sunrise:{" "}</span>
                   {new Date(sunInfo.sunrise * 1000).toLocaleTimeString(`fr-FR`)}
                 </h3>
-                <h3>
+                <h3 className={`font-semibold text-gray-400 ${changeColor}`}>
                   <span className="text-neutral-700 font-bold">Sunset:{" "}</span>
                   {new Date(sunInfo.sunset * 1000).toLocaleTimeString("fr-FR")}
                 </h3>
