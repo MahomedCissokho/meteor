@@ -70,34 +70,37 @@ const App = () => {
         </div>
       ) : (
         <div className={`w-screen h-screen ${backgroundColor}`} >
-  <div className="flex flex-col max-w-6xl mx-auto px-5 h-full items-center justify-center py-10">
-            <h1 className={`text-4xl mb-5 text-gray-800 ${changeColor}`}>Weather App</h1>
-            <h3 className={`text-2xl text-[#aaa]/90 mb-7 ${changeColor}`}>Put coordinates</h3>
+  <div className="flex flex-col max-w-6xl mx-auto px-5 py-10 items-center justify-center gap-7">
+            <h1 className={`md:text-3xl  text-2xl  text-gray-800 ${changeColor} font-bold tracking-[.5rem]`}>Weather App</h1>
+            <h3 className={`text-xl md:text-2xl text-[#aaa]/90 ${changeColor} font-400`}>Put coordinates</h3>
             <form
               onSubmit={handleSubmit}
-              className="md:flex-row flex-col flex items-center justify-center gap-7 mb-20 mt-3"
+              className="md:flex-row flex-col flex items-center justify-center gap-7 mb-3"
             >
-              <input
-                type="text"
-                placeholder="Latitude"
-                value={cordinates.latitude}
-                className="outline-none border rounded-lg py-3 px-4 focus:outline-neutral-500 "
-                onChange={updatesFormValues}
-              />
-              <input
-                type="text"
-                placeholder="Longitude"
-                value={cordinates.longitude}
-                className="outline-none border rounded-lg py-3 px-4 focus:outline-neutral-500 "
-                onChange={updatesFormValues}
-              />
+              <div className="flex items-center justify-center gap-5 ">
+                  <input
+                  type="text"
+                  placeholder="Latitude"
+                  value={cordinates.latitude}
+                  className="outline-none border rounded-lg py-3 px-4 "
+                  onChange={updatesFormValues}
+                />
+                <input
+                  type="text"
+                  placeholder="Longitude"
+                  value={cordinates.longitude}
+                  className="outline-none border rounded-lg py-3 px-4 "
+                  onChange={updatesFormValues}
+                />
+              </div>
+              
               <input
                 type="submit"
                 className="bg-neutral-700 text-white p-3 rounded-xl hover:bg-neutral-700/90 cursor-pointer transition-all ease-out duration-300"
                 value="Get Weather"
               />
             </form>
-            <div className="flex justify-center gap-20 flex-col md:flex-row">
+            <div className="flex justify-center md:gap-20 flex-col md:flex-row gap-5 ">
               <div className="text-xl flex flex-col items-center jusitfy-center gap-8">
                 <h1 className={`font-semibold text-gray-400 ${changeColor}`}>
                   <span className="font-bold text-neutral-700">City</span> :{" "}
@@ -116,20 +119,23 @@ const App = () => {
                   : {mainInfo.description}
                 </h1>
               </div>
-              <div className="flex items-center justify-center gap-5 flex-col text-xl ">
+              <div className="flex items-center justify-center gap-5 flex-col  text-xl ">
                 <img
                   src={imageZone}
                   alt="Weather"
-                  className="w-28 h-28 bg-center"
+                  className="w-20 h-20 bg-center"
                 />
-                <h3 className={`font-semibold text-gray-400 ${changeColor}`}>
-                  <span className="font-bold text-neutral-700">Sunrise:{" "}</span>
-                  {new Date(sunInfo.sunrise * 1000).toLocaleTimeString(`fr-FR`)}
-                </h3>
-                <h3 className={`font-semibold text-gray-400 ${changeColor}`}>
-                  <span className="text-neutral-700 font-bold">Sunset:{" "}</span>
-                  {new Date(sunInfo.sunset * 1000).toLocaleTimeString("fr-FR")}
-                </h3>
+                <div className="flex items-center md:flex-col flex-row gap-5">
+                    <h3 className={`font-semibold text-gray-400 ${changeColor}`}>
+                    <span className="font-bold text-neutral-700">Sunrise:{" "}</span>
+                    {new Date(sunInfo.sunrise * 1000).toLocaleTimeString(`fr-FR`)}
+                  </h3>
+                  <h3 className={`font-semibold text-gray-400 ${changeColor}`}>
+                    <span className="text-neutral-700 font-bold">Sunset:{" "}</span>
+                    {new Date(sunInfo.sunset * 1000).toLocaleTimeString("fr-FR")}
+                  </h3>
+                </div>
+                
               </div>
             </div>
           </div>
