@@ -59,7 +59,7 @@ const App = () => {
       .catch((error) => console.error(error));
   }, [APIURL]);
 
-  let backgroundColor = temperature < 0 ? 'bg-[#f5f5f5]' : temperature <= 20 ? 'bg-blue-400' : temperature > 20 && temperature <= 30 ? 'bg-orange-400' : 'bg-red-400'
+  let backgroundColor = temperature < 0 ? 'bg-[#f5f5f5]' : temperature <= 10 ? 'bg-blue-400' : temperature >10 && temperature <= 20 ? 'bg-yellow-500' : temperature > 20 && temperature <= 25 ? 'bg-green-400' : temperature <= 30 ? 'bg-orange-400' : 'bg-red-400'
   let changeColor = temperature < 0 ? '' : "text-white"
 
   return (
